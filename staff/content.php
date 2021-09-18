@@ -1,0 +1,23 @@
+<?php
+include('includes/dbconnect.php');
+$fileName=$_POST['id'];
+$sql=mysql_query('SELECT * FROM maskviolations');
+    $no=0;
+    $flag=0;
+    $match='';
+    if($sql)
+    {
+        while($row=mysql_fetch_array($sql))
+        {
+            if($fileName==$row['img'])
+            {
+                $flag=1;
+            }
+        }
+        if($flag==1)
+        {
+            $match='Match';
+        }
+    }        
+    print($match);
+?>
